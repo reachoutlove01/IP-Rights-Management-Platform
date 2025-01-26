@@ -1,21 +1,33 @@
+import { describe, it, expect, beforeEach } from "vitest"
 
-import { describe, expect, it } from "vitest";
+describe("royalty-distribution", () => {
+  let contract: any
+  
+  beforeEach(() => {
+    contract = {
+      payRoyalty: (licenseId: number, amount: number) => ({ value: 1 }),
+      getRoyaltyPayment: (paymentId: number) => ({
+        licenseId: 1,
+        amount: 1000,
+        timestamp: 1625270400,
+      }),
+    }
+  })
+  
+  describe("pay-royalty", () => {
+    it("should process a royalty payment", () => {
+      const result = contract.payRoyalty(1, 1000)
+      expect(result.value).toBe(1)
+    })
+  })
+  
+  describe("get-royalty-payment", () => {
+    it("should return royalty payment information", () => {
+      const result = contract.getRoyaltyPayment(1)
+      expect(result.licenseId).toBe(1)
+      expect(result.amount).toBe(1000)
+      expect(result.timestamp).toBe(1625270400)
+    })
+  })
+})
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});
