@@ -7,3 +7,5 @@ R
 "contracts/licensing-agreement.clar,7/3/7390d4aa524809d764ff3729598d235d1371e019
 S
 #contracts/royalty-distribution.clar,9/9/995e55fe213df7ff94d708e34d0568520c645601
+E
+contracts/ip-nft.clar,6/d/6dd24f47ed5c0f25340b7e3bfd177f9aea655f35
